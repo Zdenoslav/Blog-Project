@@ -23,7 +23,7 @@ app.use(express.static("public"));
 app.get("/", function(req, res) {
     res.render("home", {
         startingContent: homeStartingContent,
-        posts : posts
+        posts: posts
     });
 });
 
@@ -56,7 +56,20 @@ app.post("/compose", function(req, res) {
 
 });
 
+app.get('/posts/:postName', function(req, res) {
 
+    const requestedTitle = req.params.postName;
+
+    posts.forEach(function(post) {
+        const storedTitle = post.title;
+
+        if (storedTitle === requestedTitle) {
+            console.log("Match found!");
+        }
+    });
+
+
+});
 
 
 
